@@ -34,6 +34,7 @@ public class Voetbalclub {
         return aantalGewonnen + aantalGelijk + aantalVerloren;
     }
 
+    @Override
     public String toString() {
         return naam + " " + aantalGespeeld() + " " + aantalGewonnen + " " + aantalGelijk + " " + aantalVerloren + " " + aantalPunten();
     }
