@@ -5,19 +5,17 @@ public class Cirkel {
     private int xPositie;
     private int yPositie;
 
-    public Cirkel(int radius, int xPositie, int yPositie) {
-        if (radius <= 0)
+    public Cirkel(int rad, int x, int y) {
+        if (rad <= 0)
             throw new IllegalArgumentException("Radius moet groter dan 0 zijn!");
 
-        this.radius =  radius;
-        this.xPositie = xPositie;
-        this.yPositie = yPositie;
+        this.radius =  rad;
+        this.xPositie = x;
+        this.yPositie = y;
     }
 
     @Override
     public String toString() {
         return "cirkel ("+ this.xPositie +","+ this.yPositie +") met radius: 10";
     }
-
-
 }
