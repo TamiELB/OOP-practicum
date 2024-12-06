@@ -17,12 +17,12 @@ public class Voetbalclub {
         return naam;
     }
 
-    public void verwerkResultaat(char resultaat) {
-        if (resultaat == 'w')
+    public void verwerkResultaat(char ch) {
+        if (ch == 'w')
             aantalGewonnen = aantalGewonnen + 1;
-        if (resultaat == 'g')
+        if (ch == 'g')
             aantalGelijk = aantalGelijk + 1;
-        if (resultaat == 'v')
+        if (ch == 'v')
             aantalVerloren = aantalVerloren + 1;
     }
 

@@ -6,18 +6,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VoetbalclubTest {
-
     @Test
-    void legeClubNaam() {
-        Voetbalclub fc = new Voetbalclub(null);
-        assertSame("FC", fc.getNaam(), "Naam moet 'FC' zijn bij null input");
-
+    void test_initialiseerVoetbalclubMetSpatieAlsNaam() {
         Voetbalclub fc2 = new Voetbalclub(" ");
         assertEquals("FC", fc2.getNaam(), "Naam moet 'FC' zijn bij lege input");
     }
 
     @Test
-    void testWinst() {
+    void test_initialiseerVoetbalclubMetNullAlsNaam() {
+        Voetbalclub fc = new Voetbalclub(null);
+        assertSame("FC", fc.getNaam(), "Naam moet 'FC' zijn bij null input");
+    }
+
+    @Test
+    void test_initialiseerVoetbalclubMetGeldigeNaam() {
+        Voetbalclub fc = new Voetbalclub("Test");
+        assertSame("Test", fc.getNaam(), "Naam moet 'Test' maar is: " + fc.getNaam());
+    }
+
+    @Test
+    void test_verwerkWinstResultaat() {
         Voetbalclub fc = new Voetbalclub("Test");
         fc.verwerkResultaat('w');
         assertEquals(3, fc.aantalPunten(), "Punten na winst incorrect");
@@ -26,7 +34,7 @@ class VoetbalclubTest {
     }
 
     @Test
-    void testGelijkspel() {
+    void test_verwerkGelijkspelResultaat() {
         Voetbalclub fc = new Voetbalclub("Test");
         fc.verwerkResultaat('g');
         assertEquals(1, fc.aantalPunten(), "Punten na gelijkspel incorrect");
@@ -35,7 +43,7 @@ class VoetbalclubTest {
     }
 
     @Test
-    void testVerlies() {
+    void test_verwerkVerliesResultaat() {
         Voetbalclub fc = new Voetbalclub("Test");
         fc.verwerkResultaat('v');
         assertEquals(0, fc.aantalPunten(), "Punten na verlies incorrect");
@@ -44,7 +52,7 @@ class VoetbalclubTest {
     }
 
     @Test
-    void testOngeldigeInvoer() {
+    void test_verwerkOngeldigeInvoer() {
         Voetbalclub fc = new Voetbalclub("Test");
         fc.verwerkResultaat('x');
         assertEquals(0, fc.aantalPunten(), "Punten moeten ongewijzigd blijven bij ongeldige invoer");
@@ -53,7 +61,7 @@ class VoetbalclubTest {
     }
 
     @Test
-    void testHerhaaldeResultaten() {
+    void test_verwerkHerhaaldeResultaten() {
         Voetbalclub fc = new Voetbalclub("Test");
         fc.verwerkResultaat('w');
         fc.verwerkResultaat('g');
@@ -62,4 +70,5 @@ class VoetbalclubTest {
         assertEquals(3, fc.aantalGespeeld(), "Aantal gespeeld incorrect bij herhaalde invoer");
         assertEquals("Test 3 1 1 1 4", fc.toString(), "toString incorrect bij herhaalde invoer");
     }
+
 }

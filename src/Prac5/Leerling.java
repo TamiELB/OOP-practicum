@@ -22,6 +22,6 @@ public class Leerling {
 
     @Override
     public String toString() {
-        return this.naam + "heeft cijfer: " + this.cijfer;
+        return this.naam + " heeft cijfer: " + this.cijfer;
     }
 }
