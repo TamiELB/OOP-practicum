@@ -1,6 +1,7 @@
 package Prac6;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Persoon {
     private String naam;
@@ -17,8 +18,10 @@ public class Persoon {
     }
 
     public boolean koop(Game g){
-        if (this.mijnGames.stream().anyMatch(mijnGame -> mijnGame.equals(g)))
+        if (this.mijnGames.stream()
+                .anyMatch(mijnGame -> mijnGame.equals(g))) {
             return false;
+        }
 
         double gamePrijs = g.huidigeWaarde();
 
@@ -47,6 +50,13 @@ public class Persoon {
         this.budget += gamePrijs;
 
         return true;
+    }
+
+    public Game zoekGameOpNaam(String gameNaam) {
+        return mijnGames.stream()
+                .filter(mijnGame -> mijnGame.getNaam().equals(gameNaam))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
