@@ -4,8 +4,8 @@ public class Leerling {
     private String naam;
     private double cijfer;
 
-    public Leerling(String naam) {
-        this.naam = naam;
+    public Leerling(String nm) {
+        this.naam = nm;
     }
 
     public String getNaam(){
@@ -16,8 +16,8 @@ public class Leerling {
         return cijfer;
     }
 
-    public void setCijfer(double cijfer){
-        this.cijfer = cijfer;
+    public void setCijfer(double c){
+        this.cijfer = c;
     }
 
     @Override

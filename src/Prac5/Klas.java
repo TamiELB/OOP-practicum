@@ -6,12 +6,12 @@ public class Klas {
     private String klasCode;
     private ArrayList<Leerling> deLeerlingen = new ArrayList<>();
 
-    public Klas(String klasCode) {
-        this.klasCode = klasCode;
+    public Klas(String kC) {
+        this.klasCode = kC;
     }
 
-    public void voegLeerlingToe(Leerling leerling) {
-        this.deLeerlingen.add(leerling);
+    public void voegLeerlingToe(Leerling l) {
+        this.deLeerlingen.add(l);
     }
 
     public void wijzigCijfer(String nm, double nweCijfer){

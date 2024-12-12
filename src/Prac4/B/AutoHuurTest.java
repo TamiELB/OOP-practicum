@@ -18,13 +18,13 @@ class AutoHuurTest {
     }
 
     @Test
-    void testGeenHuurderGeenAuto() {
+    void test_GeenHuurderGeenAuto() {
         assertEquals(0, autoHuur.totaalPrijs(), "Totaal prijs moet 0 zijn zonder huurder en zonder auto");
         assertEquals("Er is geen auto bekend\nEr is geen klant bekend\nAantal dagen: 0 en dat kost 0.0", autoHuur.toString());
     }
 
     @Test
-    void testGeenHuurderWelAuto() {
+    void test_GeenHuurderWelAuto() {
         autoHuur.setGehuurdeAuto(gehuurdeAuto);
         autoHuur.setAantalDagen(3);
         assertEquals(360, autoHuur.totaalPrijs(), "Totaal prijs moet 360 zijn zonder huurder (120 * 3)");
@@ -32,7 +32,7 @@ class AutoHuurTest {
     }
 
     @Test
-    void testWelHuurderGeenAuto() {
+    void test_WelHuurderGeenAuto() {
         autoHuur.setHuurder(huurder);
         autoHuur.setAantalDagen(5);
         assertEquals(0, autoHuur.totaalPrijs(), "Totaal prijs moet 0 zijn zonder gehuurde auto");
@@ -40,7 +40,16 @@ class AutoHuurTest {
     }
 
     @Test
-    void testWelHuurderWelAutoGeenKorting() {
+    void test_WelHuurderGeenAutoMetKorting() {
+        huurder.setKorting(20);
+        autoHuur.setHuurder(huurder);
+        autoHuur.setAantalDagen(5);
+        assertEquals(0, autoHuur.totaalPrijs(), "Totaal prijs moet 0 zijn zonder gehuurde auto");
+        assertEquals("Er is geen auto bekend\nop naam van: Piet(korting: 20.0%)\nAantal dagen: 5 en dat kost 0.0", autoHuur.toString());
+    }
+
+    @Test
+    void test_WelHuurderWelAutoGeenKorting() {
         autoHuur.setHuurder(huurder);
         autoHuur.setGehuurdeAuto(gehuurdeAuto);
         autoHuur.setAantalDagen(2);
@@ -49,9 +58,9 @@ class AutoHuurTest {
     }
 
     @Test
-    void testWelHuurderWelAutoMetKorting() {
+    void test_WelHuurderWelAutoMetKorting() {
         double kortingPercentage = 20;
-        huurder.setKorting(20); // 20% korting
+        huurder.setKorting(kortingPercentage); // 20% korting
         autoHuur.setHuurder(huurder);
         autoHuur.setGehuurdeAuto(gehuurdeAuto);
         autoHuur.setAantalDagen(4);
