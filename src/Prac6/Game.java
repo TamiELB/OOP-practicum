@@ -36,7 +36,10 @@ public class Game {
 
         Game game = (Game) andereObject;
 
-        return this.naam.equals(game.naam) && this.releaseJaar == game.releaseJaar;
+        if (!this.naam.equals(game.naam) || !(this.releaseJaar == game.releaseJaar))
+            return false;
+
+        return true;
     }
 
     @Override
