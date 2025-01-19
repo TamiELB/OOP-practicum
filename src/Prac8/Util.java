@@ -1,4 +1,4 @@
-package Prac9.a;
+package Prac8;
 
 public class Util {
     public static String euroBedrag(double bedrag) {
